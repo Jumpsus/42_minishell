@@ -28,6 +28,34 @@ int	able_to_phrase(char *str)
 	return (1);
 }
 
+int	is_pipe_error(char *line)
+{
+	int	i;
+	int	last;
+
+	i = 0;
+	last = 0;
+	if (line[i] == '|')
+		return (1);
+	while (line[i])
+	{
+		if (line[i] == '|')
+		{
+			if (last)
+				return(1);
+			last = 1;
+		}
+		else
+		{
+			last = 0;
+		}
+		i++;
+	}
+	if (i > 0 && line[i - 1] == '|')
+		return (2);
+	return (0);
+}
+
 /*
 int	main()
 {

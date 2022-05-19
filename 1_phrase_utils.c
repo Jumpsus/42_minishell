@@ -55,10 +55,3 @@ int	is_pipe_error(char *line)
 		return (2);
 	return (0);
 }
-
-/*
-int	main()
-{
-	printf("%d\n",able_to_phrase("fsdfads\"afdsaffs"));
-}
-*/

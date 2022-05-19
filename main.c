@@ -1,3 +1,5 @@
+#include "phrase.h"
+
 /*
 // Lexer TEST
 

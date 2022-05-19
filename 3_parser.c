@@ -1,5 +1,4 @@
 #include "phrase.h"
-#include "libft.h"
 
 static int  count_row(char **lex)
 {

@@ -74,28 +74,3 @@ char    ***parser(char **lex)
     free(lex);
     return (pars);
 }
-
-int	main()
-{
-	char	**lex;
-    char    ***pars;
-	// test here
-	lex = lexer("cat a.out|cat \"\'$VARS\'\"||cat|echo hi ho     nooo    mooo");
-    pars = parser(lex);
-    
-    int j = 0;
-    int k = 0;
-    while (pars[j])
-    {
-        k = 0;
-        while (pars[j][k])
-        {
-            printf("%s ",pars[j][k]);
-            k++;
-        }
-        printf("\n");
-        j++;
-    }
-
-	//printf("%d \n", count_comp(" cat a.out | echo | \"omg this is shit\"  "));
-}

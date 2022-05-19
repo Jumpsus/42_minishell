@@ -113,21 +113,3 @@ char	**lexer(char *line)
 	split[index] = '\0';
 	return (split);
 }
-/*
-int	main()
-{
-	char	**lex;
-	int		i = 0;
-	// test here
-	lex = lexer("cat a.out|echo hi");
-	while (lex[i])
-	{
-		printf("%s address= %p\n", lex[i], &lex[i]);
-		i++;
-	}
-	printf("lex address= %p\n", &lex);
-
-
-	//printf("%d \n", count_comp(" cat a.out | echo | \"omg this is shit\"  "));
-}
-*/

@@ -16,4 +16,8 @@ char	**lexer(char *line);
 /* 3_parser.c*/
 char    ***parser(char **lex);
 
+/* 4_free_pharse.c*/
+void    free_lexer(char **lex);
+void    free_parser(char ***par);
+
 #endif

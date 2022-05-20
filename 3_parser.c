@@ -28,6 +28,24 @@ static int	count_col(char **lex, int index)
 	return (i);
 }
 
+static char *ft_dup(char *str)
+{
+    char    *dup;
+    int     i;
+
+    dup = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));
+    if (!dup)
+        return (NULL);
+    i = 0;
+    while (str[i])
+    {
+        dup[i] = str[i];
+        i++;
+    }
+    dup[i] = 0;
+    return (dup);
+}
+
 static char **put_row(char **lex, int i_lex)
 {
     char    **put;
@@ -39,7 +57,7 @@ static char **put_row(char **lex, int i_lex)
     i = 0;
     while (i < count_col(lex, i_lex))
     {
-        put[i] = lex[i_lex + i];
+        put[i] = ft_dup(lex[i_lex + i]);
         i++;
     }
     put[i] = 0;
@@ -54,7 +72,6 @@ char    ***parser(char **lex)
 
     i = 0;
     j = 0;
-    printf("row = %d\n", count_row(lex) + 1);
     pars = (char ***)malloc(sizeof(char **) * (count_row(lex) + 1));
     if (!pars)
         return (NULL);
@@ -63,9 +80,13 @@ char    ***parser(char **lex)
         pars[j++] = put_row(lex, i);
         i += count_col(lex, i);
         if (lex[i])
+        {
+            if (!lex[i + 1])
+                pars[j++] = put_row(lex, i);
             i++;
+        }
     }
     pars[j] = 0;
-    free(lex);
+    free_lexer(lex);
     return (pars);
 }

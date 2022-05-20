@@ -53,7 +53,7 @@ OBJS = $(SRCS:.c=.o)
 
 OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
 
-CC = clang
+CC = gcc
 
 CC_FLAGS = -Wall -Wextra -Werror
 
@@ -62,7 +62,7 @@ $(OBJS_DIR)%.o : %.c libft.h
 	
 	@echo "Compiling: $<"
 	
-	@clang $(CC_FLAGS) -c $< -o $@
+	@gcc $(CC_FLAGS) -c $< -o $@
 
 $(NAME): $(OBJECTS_PREFIXED)
 	

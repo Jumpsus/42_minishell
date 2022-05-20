@@ -6,7 +6,7 @@
 #    By: pratanac <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/20 20:59:54 by pratanac          #+#    #+#              #
-#    Updated: 2022/02/23 14:44:11 by pratanac         ###   ########.fr        #
+#    Updated: 2022/05/20 12:33:44 by pratanac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ OBJS = $(SRCS:.c=.o)
 
 OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
 
-CC = gcc
+CC = clang
 
 CC_FLAGS = -Wall -Wextra -Werror
 
@@ -62,7 +62,7 @@ $(OBJS_DIR)%.o : %.c libft.h
 	
 	@echo "Compiling: $<"
 	
-	@gcc $(CC_FLAGS) -c $< -o $@
+	@clang $(CC_FLAGS) -c $< -o $@
 
 $(NAME): $(OBJECTS_PREFIXED)
 	

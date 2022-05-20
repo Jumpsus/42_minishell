@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   2_lexer.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pratanac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/20 12:55:17 by pratanac          #+#    #+#             */
+/*   Updated: 2022/05/20 15:00:34 by pratanac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phrase.h"
 
 /*need to handle when pipe on first and last character*/
@@ -57,12 +69,12 @@ static int	count_w(char *line, int index)
 		return (1);
 	while (line[index + i] && (flag || (line[index + i] != ' ' && line[index + i] != '|')))
 	{
-		if (!flag && (line[i] == '\'' || line[i] == '\"'))
+		if (!flag && (line[index + i] == '\'' || line[index + i] == '\"'))
 		{
 			flag = 1;
-			quote = line[i];
+			quote = line[index + i];
 		}
-		else if (flag && line[i] == quote)
+		else if (flag && line[index + i] == quote)
 		{
 			flag = 0;
 		}
@@ -106,10 +118,10 @@ char	**lexer(char *line)
 		{
 			split[index++] = dup_w(line, i, count_w(line, i));
 			i += count_w(line, i);
-			continue;
+			continue ;
 		}
 		i++;
 	}
-	split[index] = '\0';
+	split[index] = 0;
 	return (split);
 }

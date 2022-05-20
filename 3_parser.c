@@ -1,36 +1,31 @@
 #include "phrase.h"
 
-static int  count_row(char **lex)
+static int	count_row(char **lex)
 {
-    int     i;
-    int     count;
+	int		i;
+	int		count;
 
-    i = 0;
-    if (ft_strncmp(lex[0], "|", 2))
-        count = 1;
-    else
-        count = 0;
-    while (lex[i])
-    {
-        if (!ft_strncmp(lex[i], "|", 2))
-            count++;
-        i++;
-    }
-    if (ft_strncmp(lex[i - 1], "|", 2))
-        count--;
-    return (count);
+	i = 0;
+	count = 0;
+	while (lex[i])
+	{
+		if (!ft_strncmp(lex[i], "|", 2))
+			count++;
+		i++;
+	}
+	return (++count);
 }
 
-static int  count_col(char **lex, int index)
+static int	count_col(char **lex, int index)
 {
-    int     i;
+	int		i;
 
-    i = 0;
-    while (lex[index + i] && ft_strncmp(lex[index + i], "|", 2))
-    {
-        i++;
-    }
-    return (i);
+	i = 0;
+	while (lex[index + i] && ft_strncmp(lex[index + i], "|", 2))
+	{
+		i++;
+	}
+	return (i);
 }
 
 static char **put_row(char **lex, int i_lex)
@@ -47,7 +42,7 @@ static char **put_row(char **lex, int i_lex)
         put[i] = lex[i_lex + i];
         i++;
     }
-    put[i] = '\0';
+    put[i] = 0;
     return (put);
 }
 
@@ -59,6 +54,7 @@ char    ***parser(char **lex)
 
     i = 0;
     j = 0;
+    printf("row = %d\n", count_row(lex) + 1);
     pars = (char ***)malloc(sizeof(char **) * (count_row(lex) + 1));
     if (!pars)
         return (NULL);
@@ -69,7 +65,7 @@ char    ***parser(char **lex)
         if (lex[i])
             i++;
     }
-    pars[j] = '\0';
+    pars[j] = 0;
     free(lex);
     return (pars);
 }

@@ -11,6 +11,7 @@ int     able_to_phrase(char *str);
 int     is_pipe_error(char *line);
 
 /* 2_lexer.c*/
+int		skip_quote(char *line, int index);
 char	**lexer(char *line);
 
 /* 3_parser.c*/
